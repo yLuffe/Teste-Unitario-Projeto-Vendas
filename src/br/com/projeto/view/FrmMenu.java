@@ -221,7 +221,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         int option = JOptionPane.showConfirmDialog(rootPane, "Deseja sair do sistema?");
         if (option == JOptionPane.YES_OPTION) {
-            this.dispose();
+            System.exit(0);
         }
     }//GEN-LAST:event_btnSairActionPerformed
 
@@ -237,7 +237,13 @@ public class FrmMenu extends javax.swing.JFrame {
 
     // Feito por Luiz Fernando
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
-        new FrmLogin().setVisible(true);
+        try {
+            this.dispose();
+            new FrmLogin().setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
     public static void main(String args[]) {
