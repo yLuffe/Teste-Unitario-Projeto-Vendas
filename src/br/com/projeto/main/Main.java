@@ -20,5 +20,7 @@ public class Main {
 
         // Inicia o Form de Login
         new FrmLogin().setVisible(true);
+        
+        // Adicionar função de inicar em modo de teste
     }
 }

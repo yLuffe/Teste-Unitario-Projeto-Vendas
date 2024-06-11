@@ -418,11 +418,6 @@ public class FrmFuncionario extends javax.swing.JFrame {
         jLabel16.setText("Nome:");
 
         txtpesquisa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtpesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpesquisaActionPerformed(evt);
-            }
-        });
         txtpesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtpesquisaKeyPressed(evt);
@@ -555,10 +550,6 @@ public class FrmFuncionario extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtpesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpesquisaActionPerformed
-
-    }//GEN-LAST:event_txtpesquisaActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
