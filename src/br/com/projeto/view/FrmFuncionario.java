@@ -2,18 +2,23 @@ package br.com.projeto.view;
 
 import br.com.projeto.dao.ClientesDAO;
 import br.com.projeto.dao.FuncionariosDAO;
+import br.com.projeto.interfaces.FuncionariosDao;
 import br.com.projeto.model.Clientes;
 import br.com.projeto.model.Funcionarios;
 import br.com.projeto.model.Utilitarios;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import br.com.projeto.test.AppConfig;
 
 public class FrmFuncionario extends javax.swing.JFrame {
 
-    //Método Listar na Tabela
-    public void listar() {
+    // Switch modo teste e modo de operação
+    FuncionariosDao dao = AppConfig.getFuncionariosDao();
 
-        FuncionariosDAO dao = new FuncionariosDAO();
+    //Método Listar na Tabela
+    public void listarFuncionarios() {
+
+//        FuncionariosDAO dao = new FuncionariosDAO();
         List<Funcionarios> lista = dao.listarFuncionarios();
         DefaultTableModel dados = (DefaultTableModel) tabelaFuncionarios.getModel();
         dados.setNumRows(0);
@@ -633,7 +638,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         //Carrega a lista
-        listar();
+        listarFuncionarios();
 
     }//GEN-LAST:event_formWindowActivated
 
