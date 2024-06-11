@@ -3,8 +3,8 @@ package br.com.projeto.view;
 import br.com.projeto.dao.ClientesDAO;
 import br.com.projeto.dao.FuncionariosDAO;
 import br.com.projeto.interfaces.FuncionariosDao;
-import br.com.projeto.model.Clientes;
-import br.com.projeto.model.Funcionarios;
+import br.com.projeto.model.Cliente;
+import br.com.projeto.model.Funcionario;
 import br.com.projeto.model.Utilitarios;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -19,34 +19,31 @@ public class FrmFuncionario extends javax.swing.JFrame {
     public void listarFuncionarios() {
 
 //        FuncionariosDAO dao = new FuncionariosDAO();
-        List<Funcionarios> lista = dao.listarFuncionarios();
-        DefaultTableModel dados = (DefaultTableModel) tabelaFuncionarios.getModel();
-        dados.setNumRows(0);
+        List<Funcionario> listaFuncionarios = dao.listarFuncionarios();
+        DefaultTableModel model = (DefaultTableModel) tabelaFuncionarios.getModel();
+        model.setNumRows(0);
 
-        for (Funcionarios c : lista) {
-            dados.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getSenha(),
-                c.getCargo(),
-                c.getNivel_acesso(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
-
+        for (Funcionario f : listaFuncionarios) {
+            model.addRow(new Object[]{
+                f.getId(),
+                f.getNome(),
+                f.getRg(),
+                f.getCpf(),
+                f.getEmail(),
+                f.getSenha(),
+                f.getCargo(),
+                f.getNivel_acesso(),
+                f.getTelefone(),
+                f.getCelular(),
+                f.getCep(),
+                f.getEndereco(),
+                f.getNumero(),
+                f.getComplemento(),
+                f.getBairro(),
+                f.getCidade(),
+                f.getUf()
             });
-
         }
-
     }
 
     public FrmFuncionario() {
@@ -559,7 +556,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
         // Botão Editar        
-        Funcionarios obj = new Funcionarios();
+        Funcionario obj = new Funcionario();
 
         obj.setNome(txtnome.getText());
         obj.setRg(txtrg.getText());
@@ -595,7 +592,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // Botão Salvar        
-        Funcionarios obj = new Funcionarios();
+        Funcionario obj = new Funcionario();
 
         obj.setNome(txtnome.getText());
         obj.setRg(txtrg.getText());
@@ -625,7 +622,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
     private void btnEcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEcluirActionPerformed
 
         // Botão Excluir
-        Funcionarios obj = new Funcionarios();
+        Funcionario obj = new Funcionario();
 
         obj.setId(Integer.parseInt(txtid.getText()));
 
@@ -679,11 +676,11 @@ public class FrmFuncionario extends javax.swing.JFrame {
         // Botão Pesquisar
         String nome = "%" + txtpesquisa.getText() + "%";
         FuncionariosDAO dao = new FuncionariosDAO();
-        List<Funcionarios> lista = dao.buscaFuncionario(nome);
+        List<Funcionario> lista = dao.buscaFuncionario(nome);
         DefaultTableModel dados = (DefaultTableModel) tabelaFuncionarios.getModel();
         dados.setNumRows(0);
 
-        for (Funcionarios c : lista) {
+        for (Funcionario c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
@@ -709,11 +706,11 @@ public class FrmFuncionario extends javax.swing.JFrame {
     private void txtpesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpesquisaKeyPressed
         String nome = "%" + txtpesquisa.getText() + "%";
         FuncionariosDAO dao = new FuncionariosDAO();
-        List<Funcionarios> lista = dao.buscaFuncionario(nome);
+        List<Funcionario> lista = dao.buscaFuncionario(nome);
         DefaultTableModel dados = (DefaultTableModel) tabelaFuncionarios.getModel();
         dados.setNumRows(0);
 
-        for (Funcionarios c : lista) {
+        for (Funcionario c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),

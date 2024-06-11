@@ -2,14 +2,14 @@
 package br.com.projeto.mock;
 
 import br.com.projeto.interfaces.FuncionariosDao;
-import br.com.projeto.model.Funcionarios;
+import br.com.projeto.model.Funcionario;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class FuncionariosMockDao implements FuncionariosDao {
 
-    private List<Funcionarios> funcionariosList;
+    private List<Funcionario> funcionariosList;
 
     public FuncionariosMockDao() {
         funcionariosList = new ArrayList<>();
@@ -17,17 +17,17 @@ public class FuncionariosMockDao implements FuncionariosDao {
     }
 
     private void inicializarDadosMock() {
-        funcionariosList.add(new Funcionarios("123456", "Master", "Master", 001, "Luiz Fernando",
+        funcionariosList.add(new Funcionario("123456", "Master", "Master", 001, "Luiz Fernando",
                 "1123123", "12345678912", "teste@teste.com", "48912345678", "48912345678",
                 "12123000", "Rua Sem Nome", 69, "null",
                 "Agronomica", "Florianópolis", "SC"));
     }
 
     @Override
-    public void cadastrarFuncionarios(Funcionarios obj) {
+    public void cadastrarFuncionarios(Funcionario obj) {
         // Simula a geração de um ID único
         int novoId = 1;
-        for (Funcionarios funcionario : funcionariosList) {
+        for (Funcionario funcionario : funcionariosList) {
             novoId = Math.max(novoId, funcionario.getId() + 1);
         }
         obj.setId(novoId);
@@ -36,15 +36,15 @@ public class FuncionariosMockDao implements FuncionariosDao {
     }
 
     @Override
-    public List<Funcionarios> listarFuncionarios() {
+    public List<Funcionario> listarFuncionarios() {
         return new ArrayList<>(funcionariosList);
     }
 
     @Override
-    public void excluirFuncionario(Funcionarios obj) {
-        Iterator<Funcionarios> iterator = funcionariosList.iterator();
+    public void excluirFuncionario(Funcionario obj) {
+        Iterator<Funcionario> iterator = funcionariosList.iterator();
         while (iterator.hasNext()) {
-            Funcionarios funcionario = iterator.next();
+            Funcionario funcionario = iterator.next();
             if (funcionario.getId() == obj.getId()) {
                 iterator.remove();
                 System.out.println("Funcionário removido (Mock): " + obj);
@@ -55,8 +55,8 @@ public class FuncionariosMockDao implements FuncionariosDao {
     }
 
     @Override
-    public void alterarFuncionario(Funcionarios obj) {
-        for (Funcionarios funcionario : funcionariosList) {
+    public void alterarFuncionario(Funcionario obj) {
+        for (Funcionario funcionario : funcionariosList) {
             if (funcionario.getId() == obj.getId()) {
                 funcionario.setNome(obj.getNome());
                 funcionario.setRg(obj.getRg());
@@ -82,9 +82,9 @@ public class FuncionariosMockDao implements FuncionariosDao {
     }
 
     @Override
-    public List<Funcionarios> buscaFuncionario(String nome) {
-        List<Funcionarios> resultado = new ArrayList<>();
-        for (Funcionarios funcionario : funcionariosList) {
+    public List<Funcionario> buscaFuncionario(String nome) {
+        List<Funcionario> resultado = new ArrayList<>();
+        for (Funcionario funcionario : funcionariosList) {
             if (funcionario.getNome().toLowerCase().contains(nome.toLowerCase())) {
                 resultado.add(funcionario);
             }
@@ -94,7 +94,7 @@ public class FuncionariosMockDao implements FuncionariosDao {
 
     @Override
     public void efetuaLogin(String email, String senha) {
-        for (Funcionarios funcionario : funcionariosList) {
+        for (Funcionario funcionario : funcionariosList) {
             if (funcionario.getEmail().equals(email) && funcionario.getSenha().equals(senha)) {
                 System.out.println("Usuário logado (Mock): " + funcionario.getNome());
                 return;

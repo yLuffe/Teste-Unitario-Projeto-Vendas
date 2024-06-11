@@ -1,6 +1,6 @@
 package br.com.projeto.model;
 
-public class Funcionarios extends Clientes {
+public class Funcionario extends Cliente {
 
     //Atributos
     private String senha;
@@ -8,10 +8,10 @@ public class Funcionarios extends Clientes {
     private String nivel_acesso;
 
     //Construtor feito por Luiz Fernando
-    public Funcionarios() {
+    public Funcionario() {
     }
 
-    public Funcionarios(String senha, String cargo, String nivel_acesso, int id, String nome, String rg, String cpf, String email, String telefone, String celular, String cep, String endereco, int numero, String complemento, String bairro, String cidade, String uf) {
+    public Funcionario(String senha, String cargo, String nivel_acesso, int id, String nome, String rg, String cpf, String email, String telefone, String celular, String cep, String endereco, int numero, String complemento, String bairro, String cidade, String uf) {
         super(id, nome, rg, cpf, email, telefone, celular, cep, endereco, numero, complemento, bairro, cidade, uf);
         this.senha = senha;
         this.cargo = cargo;

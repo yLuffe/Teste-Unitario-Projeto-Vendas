@@ -1,20 +1,20 @@
 // Feito por Luiz Fernando
 package br.com.projeto.interfaces;
 
-import br.com.projeto.model.Funcionarios;
+import br.com.projeto.model.Funcionario;
 import java.util.List;
 
 public interface FuncionariosDao {
 
-    void cadastrarFuncionarios(Funcionarios obj);
+    void cadastrarFuncionarios(Funcionario obj);
 
-    List<Funcionarios> listarFuncionarios();
+    List<Funcionario> listarFuncionarios();
 
-    void excluirFuncionario(Funcionarios obj);
+    void excluirFuncionario(Funcionario obj);
 
-    void alterarFuncionario(Funcionarios obj);
+    void alterarFuncionario(Funcionario obj);
 
-    List<Funcionarios> buscaFuncionario(String nome);
+    List<Funcionario> buscaFuncionario(String nome);
 
     void efetuaLogin(String email, String senha);
 }

@@ -1,6 +1,6 @@
 package br.com.projeto.model;
 
-public class Clientes {
+public class Cliente {
 
     // Atributos
     private int id;
@@ -19,10 +19,10 @@ public class Clientes {
     private String uf;
 
     // Construtor feito por Luiz Fernando
-    public Clientes() {
+    public Cliente() {
     }
 
-    public Clientes(int id, String nome, String rg, String cpf, String email, String telefone, String celular, String cep, String endereco, int numero, String complemento, String bairro, String cidade, String uf) {
+    public Cliente(int id, String nome, String rg, String cpf, String email, String telefone, String celular, String cep, String endereco, int numero, String complemento, String bairro, String cidade, String uf) {
         this.id = id;
         this.nome = nome;
         this.rg = rg;

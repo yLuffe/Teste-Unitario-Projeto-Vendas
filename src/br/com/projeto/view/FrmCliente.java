@@ -1,7 +1,7 @@
 package br.com.projeto.view;
 
 import br.com.projeto.dao.ClientesDAO;
-import br.com.projeto.model.Clientes;
+import br.com.projeto.model.Cliente;
 import br.com.projeto.model.Utilitarios;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -12,11 +12,11 @@ public class FrmCliente extends javax.swing.JFrame {
     public void listar() {
 
         ClientesDAO dao = new ClientesDAO();
-        List<Clientes> lista = dao.listarClientes();
+        List<Cliente> lista = dao.listarClientes();
         DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         dados.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Cliente c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
@@ -582,7 +582,7 @@ public class FrmCliente extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
         // Botão Editar        
-        Clientes obj = new Clientes();
+        Cliente obj = new Cliente();
 
         obj.setNome(txtnome.getText());
         obj.setRg(txtrg.getText());
@@ -615,7 +615,7 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void btnsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvarActionPerformed
         // Botão Salvar        
-        Clientes obj = new Clientes();
+        Cliente obj = new Cliente();
 
         obj.setNome(txtnome.getText());
         obj.setRg(txtrg.getText());
@@ -640,7 +640,7 @@ public class FrmCliente extends javax.swing.JFrame {
     private void btnEcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEcluirActionPerformed
 
         // Botão Excluir
-        Clientes obj = new Clientes();
+        Cliente obj = new Cliente();
 
         obj.setId(Integer.parseInt(txtid.getText()));
 
@@ -694,11 +694,11 @@ public class FrmCliente extends javax.swing.JFrame {
         // Botão Pesquisar
         String nome = "%" + txtpesquisa.getText() + "%";
         ClientesDAO dao = new ClientesDAO();
-        List<Clientes> lista = dao.buscaClientePorNome(nome);
+        List<Cliente> lista = dao.buscaClientePorNome(nome);
         DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         dados.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Cliente c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
@@ -724,11 +724,11 @@ public class FrmCliente extends javax.swing.JFrame {
     private void txtpesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpesquisaKeyPressed
                String nome = "%" + txtpesquisa.getText() + "%";
         ClientesDAO dao = new ClientesDAO();
-        List<Clientes> lista = dao.buscaClientePorNome(nome);
+        List<Cliente> lista = dao.buscaClientePorNome(nome);
         DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         dados.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Cliente c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),

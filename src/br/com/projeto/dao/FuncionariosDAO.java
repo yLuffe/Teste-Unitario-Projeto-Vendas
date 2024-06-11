@@ -2,8 +2,8 @@ package br.com.projeto.dao;
 
 import br.com.projeto.interfaces.FuncionariosDao;
 import br.com.projeto.jdbc.ConnectionFactory;
-import br.com.projeto.model.Clientes;
-import br.com.projeto.model.Funcionarios;
+import br.com.projeto.model.Cliente;
+import br.com.projeto.model.Funcionario;
 import br.com.projeto.view.FrmLogin;
 import br.com.projeto.view.FrmMenu;
 import java.sql.Connection;
@@ -25,7 +25,7 @@ public class FuncionariosDAO implements FuncionariosDao {
     }
 
     //Método Cadastrar Funcionários
-    public void cadastrarFuncionarios(Funcionarios obj) {
+    public void cadastrarFuncionarios(Funcionario obj) {
 
         try {
 
@@ -67,10 +67,10 @@ public class FuncionariosDAO implements FuncionariosDao {
     }
 
     //Método Listar Funcionários
-    public List<Funcionarios> listarFuncionarios() {
+    public List<Funcionario> listarFuncionarios() {
         try {
             //1Passo criar a lista
-            List<Funcionarios> lista = new ArrayList<>();
+            List<Funcionario> lista = new ArrayList<>();
 
             //2Passo - criar o sql e executar
             String sql = "select * from tb_funcionarios";
@@ -79,7 +79,7 @@ public class FuncionariosDAO implements FuncionariosDao {
 
             while (rs.next()) {
 
-                Funcionarios obj = new Funcionarios();
+                Funcionario obj = new Funcionario();
 
                 obj.setId(rs.getInt("id"));
                 obj.setNome(rs.getString("nome"));
@@ -116,7 +116,7 @@ public class FuncionariosDAO implements FuncionariosDao {
     }
 
     //Método Excluir Funcionário
-    public void excluirFuncionario(Funcionarios obj) {
+    public void excluirFuncionario(Funcionario obj) {
         try {
 
             //1ºPasso - Criar o comando SQL
@@ -139,7 +139,7 @@ public class FuncionariosDAO implements FuncionariosDao {
     }
 
     //Método Alterar Funcionário
-    public void alterarFuncionario(Funcionarios obj) {
+    public void alterarFuncionario(Funcionario obj) {
 
         try {
 
@@ -182,10 +182,10 @@ public class FuncionariosDAO implements FuncionariosDao {
     }
 
     //Método Buscar Funcionário por Nome
-    public List<Funcionarios> buscaFuncionario(String nome) {
+    public List<Funcionario> buscaFuncionario(String nome) {
         try {
             //1Passo criar a lista
-            List<Funcionarios> lista = new ArrayList<>();
+            List<Funcionario> lista = new ArrayList<>();
 
             //2Passo - criar o sql e executar
             String sql = "select * from tb_funcionarios where nome like ?";
@@ -195,7 +195,7 @@ public class FuncionariosDAO implements FuncionariosDao {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Funcionarios obj = new Funcionarios();
+                Funcionario obj = new Funcionario();
 
                 obj.setId(rs.getInt("id"));
                 obj.setNome(rs.getString("nome"));
