@@ -1,7 +1,7 @@
 package br.com.projeto.dao;
 
 import br.com.projeto.jdbc.ConnectionFactory;
-import br.com.projeto.model.Clientes;
+import br.com.projeto.model.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +21,7 @@ public class ClientesDAO {
     }
 
     //Método Cadastrar Cliente
-    public void cadastrarCliente(Clientes obj) {
+    public void cadastrarCliente(Cliente obj) {
 
         try {
 
@@ -59,7 +59,7 @@ public class ClientesDAO {
     
 
     //Método Alterar Cliente
-    public void alterarCliente(Clientes obj) {
+    public void alterarCliente(Cliente obj) {
         
         try {
 
@@ -104,7 +104,7 @@ public class ClientesDAO {
     
 
     //Método Excluir Cliente
-    public void excluirCliente(Clientes obj) {
+    public void excluirCliente(Cliente obj) {
         try {
             
             //1ºPasso - Criar o comando SQL
@@ -132,10 +132,10 @@ public class ClientesDAO {
     
 
     //Método Listar Clientes
-    public List<Clientes> listarClientes() {
+    public List<Cliente> listarClientes() {
         try {
             //1Passo criar a lista
-            List<Clientes> lista = new ArrayList<>();
+            List<Cliente> lista = new ArrayList<>();
 
             //2Passo - criar o sql e executar
             String sql = "select * from tb_clientes";
@@ -144,7 +144,7 @@ public class ClientesDAO {
 
             while (rs.next()) {
 
-                Clientes obj = new Clientes();
+                Cliente obj = new Cliente();
 
                 obj.setId(rs.getInt("id"));
                 obj.setNome(rs.getString("nome"));
@@ -176,10 +176,10 @@ public class ClientesDAO {
     }
     
     //Método Buscar Cliente por Nome
-        public List<Clientes> buscaClientePorNome(String nome) {
+        public List<Cliente> buscaClientePorNome(String nome) {
         try {
             //1Passo criar a lista
-            List<Clientes> lista = new ArrayList<>();
+            List<Cliente> lista = new ArrayList<>();
 
             //2Passo - criar o sql e executar
             String sql = "select * from tb_clientes where nome like ?";
@@ -190,7 +190,7 @@ public class ClientesDAO {
 
             while (rs.next()) {
 
-                Clientes obj = new Clientes();
+                Cliente obj = new Cliente();
 
                 obj.setId(rs.getInt("id"));
                 obj.setNome(rs.getString("nome"));

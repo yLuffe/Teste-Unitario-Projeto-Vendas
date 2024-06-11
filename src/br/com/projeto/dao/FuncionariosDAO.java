@@ -1,8 +1,9 @@
 package br.com.projeto.dao;
 
+import br.com.projeto.interfaces.FuncionariosDao;
 import br.com.projeto.jdbc.ConnectionFactory;
-import br.com.projeto.model.Clientes;
-import br.com.projeto.model.Funcionarios;
+import br.com.projeto.model.Cliente;
+import br.com.projeto.model.Funcionario;
 import br.com.projeto.view.FrmLogin;
 import br.com.projeto.view.FrmMenu;
 import java.sql.Connection;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class FuncionariosDAO {
+public class FuncionariosDAO implements FuncionariosDao {
 
     //Variavel de Conexão
     private Connection con;
@@ -24,7 +25,7 @@ public class FuncionariosDAO {
     }
 
     //Método Cadastrar Funcionários
-    public void cadastrarFuncionarios(Funcionarios obj) {
+    public void cadastrarFuncionarios(Funcionario obj) {
 
         try {
 
@@ -65,11 +66,11 @@ public class FuncionariosDAO {
         }
     }
 
-    //Método Listar Funcionarios
-    public List<Funcionarios> listarFuncionarios() {
+    //Método Listar Funcionários
+    public List<Funcionario> listarFuncionarios() {
         try {
             //1Passo criar a lista
-            List<Funcionarios> lista = new ArrayList<>();
+            List<Funcionario> lista = new ArrayList<>();
 
             //2Passo - criar o sql e executar
             String sql = "select * from tb_funcionarios";
@@ -78,7 +79,7 @@ public class FuncionariosDAO {
 
             while (rs.next()) {
 
-                Funcionarios obj = new Funcionarios();
+                Funcionario obj = new Funcionario();
 
                 obj.setId(rs.getInt("id"));
                 obj.setNome(rs.getString("nome"));
@@ -114,8 +115,8 @@ public class FuncionariosDAO {
         }
     }
 
-    //Método Excluir Funcionario
-    public void excluirFuncionario(Funcionarios obj) {
+    //Método Excluir Funcionário
+    public void excluirFuncionario(Funcionario obj) {
         try {
 
             //1ºPasso - Criar o comando SQL
@@ -137,8 +138,8 @@ public class FuncionariosDAO {
 
     }
 
-    //Método Alterar Funcionario
-    public void alterarFuncionario(Funcionarios obj) {
+    //Método Alterar Funcionário
+    public void alterarFuncionario(Funcionario obj) {
 
         try {
 
@@ -180,11 +181,11 @@ public class FuncionariosDAO {
         }
     }
 
-    //Método Buscar Funcionario por Nome
-    public List<Funcionarios> buscaFuncionario(String nome) {
+    //Método Buscar Funcionário por Nome
+    public List<Funcionario> buscaFuncionario(String nome) {
         try {
             //1Passo criar a lista
-            List<Funcionarios> lista = new ArrayList<>();
+            List<Funcionario> lista = new ArrayList<>();
 
             //2Passo - criar o sql e executar
             String sql = "select * from tb_funcionarios where nome like ?";
@@ -194,7 +195,7 @@ public class FuncionariosDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Funcionarios obj = new Funcionarios();
+                Funcionario obj = new Funcionario();
 
                 obj.setId(rs.getInt("id"));
                 obj.setNome(rs.getString("nome"));
@@ -227,7 +228,7 @@ public class FuncionariosDAO {
         }
     }
 
-    //Metodo Efetua Login
+    //Método Efetuar Login
     public void efetuaLogin(String email, String senha) {
         try {
             //1ºPasso - SQL

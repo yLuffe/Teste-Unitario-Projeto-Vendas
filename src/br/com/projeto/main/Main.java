@@ -1,8 +1,12 @@
 // Feito por Luiz Fernando Kuhn
 package br.com.projeto.main;
 
+import br.com.projeto.dao.FuncionariosDAO;
+import br.com.projeto.interfaces.FuncionariosDao;
+import br.com.projeto.mock.FuncionariosMockDao;
 import br.com.projeto.view.FrmLogin;
 import javax.swing.UIManager;
+import br.com.projeto.test.AppConfig;
 
 public class Main {
 

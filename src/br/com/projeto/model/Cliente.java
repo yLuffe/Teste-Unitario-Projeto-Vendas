@@ -1,7 +1,8 @@
 package br.com.projeto.model;
 
-public class Clientes {
-    
+public class Cliente {
+
+    // Atributos
     private int id;
     private String nome;
     private String rg;
@@ -17,6 +18,28 @@ public class Clientes {
     private String cidade;
     private String uf;
 
+    // Construtor feito por Luiz Fernando
+    public Cliente() {
+    }
+
+    public Cliente(int id, String nome, String rg, String cpf, String email, String telefone, String celular, String cep, String endereco, int numero, String complemento, String bairro, String cidade, String uf) {
+        this.id = id;
+        this.nome = nome;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.celular = celular;
+        this.cep = cep;
+        this.endereco = endereco;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+    }
+    
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -24,8 +47,6 @@ public class Clientes {
     public void setId(int id) {
         this.id = id;
     }
-
-    
 
     public String getNome() {
         return nome;
@@ -94,7 +115,7 @@ public class Clientes {
     public String getComplemento() {
         return complemento;
     }
-    
+
     public int getNumero() {
         return numero;
     }
@@ -130,7 +151,5 @@ public class Clientes {
     public void setUf(String uf) {
         this.uf = uf;
     }
-    
-    
-    
+
 }
