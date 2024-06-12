@@ -5,16 +5,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Utilitarios {
-    
+
     //Método Limpar Campos
-    public void limparJTextFields(JPanel container){
+    public void limparJTextFields(JPanel container) {
         Component components[] = container.getComponents();
-        for(Component component : components){
-            if(component instanceof JTextField){
-                ((JTextField)component).setText(null);
+        for (Component component : components) {
+            if (component instanceof JTextField) {
+                ((JTextField) component).setText(null);
             }
         }
     }
-    
-    
 }
