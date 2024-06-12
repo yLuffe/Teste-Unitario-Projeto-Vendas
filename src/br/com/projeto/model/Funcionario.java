@@ -5,17 +5,17 @@ public class Funcionario extends Cliente {
     //Atributos
     private String senha;
     private String cargo;
-    private String nivel_acesso;
+    private String nivelAcesso;
 
     //Construtor feito por Luiz Fernando
     public Funcionario() {
     }
 
-    public Funcionario(String senha, String cargo, String nivel_acesso, int id, String nome, String rg, String cpf, String email, String telefone, String celular, String cep, String endereco, int numero, String complemento, String bairro, String cidade, String uf) {
+    public Funcionario(String senha, String cargo, String nivelAcesso, int id, String nome, String rg, String cpf, String email, String telefone, String celular, String cep, String endereco, int numero, String complemento, String bairro, String cidade, String uf) {
         super(id, nome, rg, cpf, email, telefone, celular, cep, endereco, numero, complemento, bairro, cidade, uf);
         this.senha = senha;
         this.cargo = cargo;
-        this.nivel_acesso = nivel_acesso;
+        this.nivelAcesso = nivelAcesso;
     }
     
 
@@ -36,18 +36,18 @@ public class Funcionario extends Cliente {
         this.cargo = cargo;
     }
 
-    public String getNivel_acesso() {
-        return nivel_acesso;
+    public String getNivelAcesso() {
+        return nivelAcesso;
     }
 
-    public void setNivel_acesso(String nivel_acesso) {
-        this.nivel_acesso = nivel_acesso;
+    public void setNivelAcesso(String nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
     }
 
     //Feito por Luiz Fernando
     @Override
     public String toString() {
-        return "Funcionarios{" + "senha=" + senha + ", cargo=" + cargo + ", nivel_acesso=" + nivel_acesso + '}';
+        return "Funcionarios{" + "cargo=" + cargo + ", nivel_acesso=" + nivelAcesso + '}';
     }
 
 }

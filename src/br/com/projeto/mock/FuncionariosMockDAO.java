@@ -6,18 +6,19 @@ import br.com.projeto.model.Funcionario;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class FuncionariosMockDao implements FuncionariosDao {
 
-    private List<Funcionario> funcionariosList;
+    private List<Funcionario> funcionariosDataBase;
 
     public FuncionariosMockDao() {
-        funcionariosList = new ArrayList<>();
+        funcionariosDataBase = new ArrayList<>();
         inicializarDadosMock();
     }
 
     private void inicializarDadosMock() {
-        funcionariosList.add(new Funcionario("123456", "Master", "Master", 001, "Luiz Fernando",
+        funcionariosDataBase.add(new Funcionario("123456", "Master", "Master", 001, "Luiz Fernando",
                 "1123123", "12345678912", "teste@teste.com", "48912345678", "48912345678",
                 "12123000", "Rua Sem Nome", 69, "null",
                 "Agronomica", "Florianópolis", "SC"));
@@ -27,22 +28,22 @@ public class FuncionariosMockDao implements FuncionariosDao {
     public void cadastrarFuncionarios(Funcionario obj) {
         // Simula a geração de um ID único
         int novoId = 1;
-        for (Funcionario funcionario : funcionariosList) {
+        for (Funcionario funcionario : funcionariosDataBase) {
             novoId = Math.max(novoId, funcionario.getId() + 1);
         }
         obj.setId(novoId);
-        funcionariosList.add(obj);
+        funcionariosDataBase.add(obj);
         System.out.println("Funcionário cadastrado (Mock): " + obj);
     }
 
     @Override
     public List<Funcionario> listarFuncionarios() {
-        return new ArrayList<>(funcionariosList);
+        return new ArrayList<>(funcionariosDataBase);
     }
 
     @Override
     public void excluirFuncionario(Funcionario obj) {
-        Iterator<Funcionario> iterator = funcionariosList.iterator();
+        Iterator<Funcionario> iterator = funcionariosDataBase.iterator();
         while (iterator.hasNext()) {
             Funcionario funcionario = iterator.next();
             if (funcionario.getId() == obj.getId()) {
@@ -56,7 +57,7 @@ public class FuncionariosMockDao implements FuncionariosDao {
 
     @Override
     public void alterarFuncionario(Funcionario obj) {
-        for (Funcionario funcionario : funcionariosList) {
+        for (Funcionario funcionario : funcionariosDataBase) {
             if (funcionario.getId() == obj.getId()) {
                 funcionario.setNome(obj.getNome());
                 funcionario.setRg(obj.getRg());
@@ -64,7 +65,7 @@ public class FuncionariosMockDao implements FuncionariosDao {
                 funcionario.setEmail(obj.getEmail());
                 funcionario.setSenha(obj.getSenha());
                 funcionario.setCargo(obj.getCargo());
-                funcionario.setNivel_acesso(obj.getNivel_acesso());
+                funcionario.setNivelAcesso(obj.getNivelAcesso());
                 funcionario.setTelefone(obj.getTelefone());
                 funcionario.setCelular(obj.getCelular());
                 funcionario.setCep(obj.getCep());
@@ -82,19 +83,33 @@ public class FuncionariosMockDao implements FuncionariosDao {
     }
 
     @Override
-    public List<Funcionario> buscaFuncionario(String nome) {
+    public List<Funcionario> buscarFuncionario(String nome) {
         List<Funcionario> resultado = new ArrayList<>();
-        for (Funcionario funcionario : funcionariosList) {
+        for (Funcionario funcionario : funcionariosDataBase) {
             if (funcionario.getNome().toLowerCase().contains(nome.toLowerCase())) {
                 resultado.add(funcionario);
             }
         }
         return resultado;
     }
+    
+    @Override
+    public Funcionario buscarFuncionario(int id) {
+        try {
+            for(Funcionario f :funcionariosDataBase){
+                if(f.getId() == id){
+                    return f;
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return null;
+    }
 
     @Override
     public void efetuaLogin(String email, String senha) {
-        for (Funcionario funcionario : funcionariosList) {
+        for (Funcionario funcionario : funcionariosDataBase) {
             if (funcionario.getEmail().equals(email) && funcionario.getSenha().equals(senha)) {
                 System.out.println("Usuário logado (Mock): " + funcionario.getNome());
                 return;
@@ -102,4 +117,6 @@ public class FuncionariosMockDao implements FuncionariosDao {
         }
         System.out.println("Usuário não encontrado ou senha incorreta (Mock)");
     }
+
+    
 }

@@ -14,7 +14,9 @@ public interface FuncionariosDao {
 
     void alterarFuncionario(Funcionario obj);
 
-    List<Funcionario> buscaFuncionario(String nome);
+    List<Funcionario> buscarFuncionario(String nome);
+    
+    Funcionario buscarFuncionario(int id);
 
     void efetuaLogin(String email, String senha);
 }

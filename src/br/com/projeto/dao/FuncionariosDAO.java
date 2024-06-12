@@ -42,7 +42,7 @@ public class FuncionariosDAO implements FuncionariosDao {
 
             stmt.setString(5, obj.getSenha());
             stmt.setString(6, obj.getCargo());
-            stmt.setString(7, obj.getNivel_acesso());
+            stmt.setString(7, obj.getNivelAcesso());
 
             stmt.setString(8, obj.getTelefone());
             stmt.setString(9, obj.getCelular());
@@ -89,7 +89,7 @@ public class FuncionariosDAO implements FuncionariosDao {
 
                 obj.setSenha(rs.getString("senha"));
                 obj.setCargo(rs.getString("cargo"));
-                obj.setNivel_acesso(rs.getString("nivel_acesso"));
+                obj.setNivelAcesso(rs.getString("nivel_acesso"));
 
                 obj.setTelefone(rs.getString("telefone"));
                 obj.setCelular(rs.getString("celular"));
@@ -156,7 +156,7 @@ public class FuncionariosDAO implements FuncionariosDao {
 
             stmt.setString(5, obj.getSenha());
             stmt.setString(6, obj.getCargo());
-            stmt.setString(7, obj.getNivel_acesso());
+            stmt.setString(7, obj.getNivelAcesso());
 
             stmt.setString(8, obj.getTelefone());
             stmt.setString(9, obj.getCelular());
@@ -182,7 +182,7 @@ public class FuncionariosDAO implements FuncionariosDao {
     }
 
     //Método Buscar Funcionário por Nome
-    public List<Funcionario> buscaFuncionario(String nome) {
+    public List<Funcionario> buscarFuncionario(String nome) {
         try {
             //1Passo criar a lista
             List<Funcionario> lista = new ArrayList<>();
@@ -205,7 +205,7 @@ public class FuncionariosDAO implements FuncionariosDao {
 
                 obj.setSenha(rs.getString("senha"));
                 obj.setCargo(rs.getString("cargo"));
-                obj.setNivel_acesso(rs.getString("nivel_acesso"));
+                obj.setNivelAcesso(rs.getString("nivel_acesso"));
 
                 obj.setTelefone(rs.getString("telefone"));
                 obj.setCelular(rs.getString("celular"));
@@ -254,5 +254,11 @@ public class FuncionariosDAO implements FuncionariosDao {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro : " + erro);
         }
+    }
+
+    @Override
+    public Funcionario buscarFuncionario(int id) {
+        //TODO
+        throw new UnsupportedOperationException("Ainda não implementado"); 
     }
 }
