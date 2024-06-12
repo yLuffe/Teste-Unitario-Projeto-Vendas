@@ -684,25 +684,25 @@ public class FrmFuncionario extends javax.swing.JFrame {
             DefaultTableModel dados = (DefaultTableModel) tableFuncionarios.getModel();
             dados.setNumRows(0);
 
-            for (Funcionario c : listaFuncionarios) {
+            for (Funcionario f : listaFuncionarios) {
                 dados.addRow(new Object[]{
-                    c.getId(),
-                    c.getNome(),
-                    c.getRg(),
-                    c.getCpf(),
-                    c.getEmail(),
-                    c.getSenha(),
-                    c.getCargo(),
-                    c.getNivelAcesso(),
-                    c.getTelefone(),
-                    c.getCelular(),
-                    c.getCep(),
-                    c.getEndereco(),
-                    c.getNumero(),
-                    c.getComplemento(),
-                    c.getBairro(),
-                    c.getCidade(),
-                    c.getUf()
+                    f.getId(),
+                    f.getNome(),
+                    f.getRg(),
+                    f.getCpf(),
+                    f.getEmail(),
+                    f.getSenha(),
+                    f.getCargo(),
+                    f.getNivelAcesso(),
+                    f.getTelefone(),
+                    f.getCelular(),
+                    f.getCep(),
+                    f.getEndereco(),
+                    f.getNumero(),
+                    f.getComplemento(),
+                    f.getBairro(),
+                    f.getCidade(),
+                    f.getUf()
                 });
             }
         } catch (Exception e) {

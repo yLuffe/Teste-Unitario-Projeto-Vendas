@@ -86,7 +86,7 @@ public class FuncionariosMockDao implements FuncionariosDao {
     public List<Funcionario> buscarFuncionario(String nome) {
         List<Funcionario> resultado = new ArrayList<>();
         for (Funcionario funcionario : funcionariosDataBase) {
-            if (funcionario.getNome().toLowerCase().contains(nome.toLowerCase())) {
+            if (funcionario.getNome().toLowerCase().contains(nome.replaceAll("%", "").toLowerCase())) {
                 resultado.add(funcionario);
             }
         }
