@@ -603,13 +603,13 @@ public class FrmCliente extends javax.swing.JFrame {
         ClientesDAO dao = new ClientesDAO();
         dao.alterarCliente(obj);
         
-        new Utilitarios().limpaTela(painel_Dados_Pessoais);
+        new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         
-        new Utilitarios().limpaTela(painel_Dados_Pessoais);
+        new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
         
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -634,7 +634,7 @@ public class FrmCliente extends javax.swing.JFrame {
         ClientesDAO dao = new ClientesDAO();
         dao.cadastrarCliente(obj);
         
-        new Utilitarios().limpaTela(painel_Dados_Pessoais);
+        new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
     }//GEN-LAST:event_btnsalvarActionPerformed
 
     private void btnEcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEcluirActionPerformed
@@ -648,7 +648,7 @@ public class FrmCliente extends javax.swing.JFrame {
 
         dao.excluirCliente(obj);
         
-        new Utilitarios().limpaTela(painel_Dados_Pessoais);
+        new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
 
 
     }//GEN-LAST:event_btnEcluirActionPerformed

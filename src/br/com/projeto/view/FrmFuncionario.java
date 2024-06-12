@@ -593,12 +593,12 @@ public class FrmFuncionario extends javax.swing.JFrame {
         FuncionariosDAO dao = new FuncionariosDAO();
         dao.alterarFuncionario(obj);
 
-        new Utilitarios().limpaTela(painel_Dados_Pessoais);
+        new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        new Utilitarios().limpaTela(painel_Dados_Pessoais);
+        new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -627,7 +627,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
         FuncionariosDAO dao = new FuncionariosDAO();
         dao.cadastrarFuncionarios(obj);
 
-        new Utilitarios().limpaTela(painel_Dados_Pessoais);
+        new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEcluirActionPerformed
@@ -641,7 +641,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
 
         dao.excluirFuncionario(obj);
 
-        new Utilitarios().limpaTela(painel_Dados_Pessoais);
+        new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
     }//GEN-LAST:event_btnEcluirActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
