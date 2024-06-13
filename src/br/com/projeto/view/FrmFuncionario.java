@@ -30,21 +30,21 @@ public class FrmFuncionario extends javax.swing.JFrame {
             model.addRow(new Object[]{
                 f.getId(),
                 f.getNome(),
-                f.getRg(),
-                f.getCpf(),
-                f.getEmail(),
-                f.getSenha(),
                 f.getCargo(),
                 f.getNivelAcesso(),
-                f.getTelefone(),
+                f.getEmail(),
                 f.getCelular(),
-                f.getCep(),
-                f.getEndereco(),
-                f.getNumero(),
-                f.getComplemento(),
-                f.getBairro(),
+                f.getTelefone(),
                 f.getCidade(),
                 f.getUf()
+                //f.getRg(),
+                //f.getCpf(),             
+                //f.getSenha(),
+                //f.getCep(),
+                //f.getEndereco(),
+                //f.getNumero(),
+                //f.getComplemento(),
+                // f.getBairro()
             });
         }
     }
@@ -427,23 +427,35 @@ public class FrmFuncionario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Cargo", "Nivel Acesso", "E-mail", "Celular", "Telefone", "Cidade", "UF", "RG", "Cpf", "CEP", "Endereço", "Nº", "Comp", "Bairro"
+                "Código", "Nome", "Cargo", "Nível Acesso", "E-mail", "Celular", "Telefone", "Cidade", "UF"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tableFuncionarios.getTableHeader().setReorderingAllowed(false);
         tableFuncionarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableFuncionariosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tableFuncionarios);
+        if (tableFuncionarios.getColumnModel().getColumnCount() > 0) {
+            tableFuncionarios.getColumnModel().getColumn(0).setPreferredWidth(55);
+            tableFuncionarios.getColumnModel().getColumn(1).setPreferredWidth(290);
+            tableFuncionarios.getColumnModel().getColumn(2).setPreferredWidth(120);
+            tableFuncionarios.getColumnModel().getColumn(3).setPreferredWidth(120);
+            tableFuncionarios.getColumnModel().getColumn(4).setPreferredWidth(250);
+            tableFuncionarios.getColumnModel().getColumn(5).setPreferredWidth(110);
+            tableFuncionarios.getColumnModel().getColumn(6).setPreferredWidth(110);
+            tableFuncionarios.getColumnModel().getColumn(7).setPreferredWidth(100);
+            tableFuncionarios.getColumnModel().getColumn(8).setPreferredWidth(30);
+        }
 
         javax.swing.GroupLayout jPanelConsultaFuncionariosLayout = new javax.swing.GroupLayout(jPanelConsultaFuncionarios);
         jPanelConsultaFuncionarios.setLayout(jPanelConsultaFuncionariosLayout);
@@ -643,33 +655,35 @@ public class FrmFuncionario extends javax.swing.JFrame {
     // Buscar dados do Funcionário e colocar nos campos do menu Dados Pessoais
     private void tableFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFuncionariosMouseClicked
         try {
-            jTabbedPaneFuncionarios.setSelectedIndex(0);
+            if (evt.getClickCount() == 2) {
+                jTabbedPaneFuncionarios.setSelectedIndex(0);
 
-            // Pega a linha selecionada da tabela
-            int selectedRow = tableFuncionarios.getSelectedRow();
+                // Pega a linha selecionada da tabela
+                int selectedRow = tableFuncionarios.getSelectedRow();
 
-            // Busca o funcionária por ID
-            Funcionario f = dataAccess.buscarFuncionario((int) tableFuncionarios.getValueAt(selectedRow, 0));
+                // Busca o funcionária por ID
+                Funcionario f = dataAccess.buscarFuncionario((int) tableFuncionarios.getValueAt(selectedRow, 0));
 
-            // jTextFields
-            textId.setText(f.getId() + "");
-            textNome.setText(f.getNome());
-            textRG.setText(f.getRg());
-            textCPF.setText(f.getCpf());
-            textEmail.setText(f.getEmail());
-            textCargo.setText(f.getCargo());
-            textNumFixo.setText(f.getTelefone());
-            textNumCelular.setText(f.getCelular());
-            textCEP.setText(f.getCep());
-            textEndereco.setText(f.getEndereco());
-            textNumero.setText(f.getNumero() + "");
-            textComplemento.setText(f.getComplemento());
-            textBairro.setText(f.getBairro());
-            textCidade.setText(f.getCidade());
+                // jTextFields
+                textId.setText(f.getId() + "");
+                textNome.setText(f.getNome());
+                textRG.setText(f.getRg());
+                textCPF.setText(f.getCpf());
+                textEmail.setText(f.getEmail());
+                textCargo.setText(f.getCargo());
+                textNumFixo.setText(f.getTelefone());
+                textNumCelular.setText(f.getCelular());
+                textCEP.setText(f.getCep());
+                textEndereco.setText(f.getEndereco());
+                textNumero.setText(f.getNumero() + "");
+                textComplemento.setText(f.getComplemento());
+                textBairro.setText(f.getBairro());
+                textCidade.setText(f.getCidade());
 
-            // jComboBoxes
-            boxNivelAcesso.setSelectedItem(f.getNivelAcesso());
-            boxUnidadeFederativa.setSelectedItem(f.getUf());
+                // jComboBoxes
+                boxNivelAcesso.setSelectedItem(f.getNivelAcesso());
+                boxUnidadeFederativa.setSelectedItem(f.getUf());
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
