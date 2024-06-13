@@ -7,7 +7,7 @@ import javax.swing.JTextField;
 public class Utilitarios {
 
     //Método Limpar Campos
-    public void limparJTextFields(JPanel container) {
+    public static void limparJTextFields(JPanel container) {
         Component components[] = container.getComponents();
         for (Component component : components) {
             if (component instanceof JTextField) {

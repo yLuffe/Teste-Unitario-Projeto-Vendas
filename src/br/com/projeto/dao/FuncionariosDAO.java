@@ -28,7 +28,6 @@ public class FuncionariosDAO implements FuncionariosDao {
     public void cadastrarFuncionarios(Funcionario obj) {
 
         try {
-
             //1 Passo - Criar o comando SQL
             String sql = "insert into tb_funcionarios(nome,rg,cpf,email,senha,cargo,nivel_acesso,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado)"
                     + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -62,7 +61,6 @@ public class FuncionariosDAO implements FuncionariosDao {
 
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro: " + erro);
-
         }
     }
 
@@ -102,51 +100,39 @@ public class FuncionariosDAO implements FuncionariosDao {
                 obj.setUf(rs.getString("estado"));
 
                 lista.add(obj);
-
             }
-
             return lista;
-
         } catch (SQLException erro) {
-
             JOptionPane.showMessageDialog(null, "Erro : " + erro);
             return null;
-
         }
     }
 
     //Método Excluir Funcionário
-    public void excluirFuncionario(Funcionario obj) {
+    @Override
+    public void excluirFuncionario(int id) {
         try {
-
             //1ºPasso - Criar o comando SQL
             String sql = "delete from tb_funcionarios where id=?";
-
             //2ºPasso - Conectar o BD e Organizar o Comando SQL
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, obj.getId());
-
+            stmt.setInt(1, id);
             //3ºPasso - Executar o Comando SQL
             stmt.execute();
             stmt.close();
-
             JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
-
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro : " + erro);
         }
-
     }
 
     //Método Alterar Funcionário
+    @Override
     public void alterarFuncionario(Funcionario obj) {
-
         try {
-
             //1 Passo - Criar o comando SQL
             String sql = "update tb_funcionarios set nome=?,rg=?,cpf=?,email=?,senha=?,cargo=?,nivel_acesso=?,telefone=?,celular=?,cep=?,endereco=?,numero=?,"
                     + "complemento=?,bairro=?,cidade=?,estado=? where id=?";
-
             //2-Passo - Conectar o BD e organizar o camando SQL
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, obj.getNome());
@@ -182,11 +168,11 @@ public class FuncionariosDAO implements FuncionariosDao {
     }
 
     //Método Buscar Funcionário por Nome
+    @Override
     public List<Funcionario> buscarFuncionario(String nome) {
         try {
             //1Passo criar a lista
             List<Funcionario> lista = new ArrayList<>();
-
             //2Passo - criar o sql e executar
             String sql = "select * from tb_funcionarios where nome like ?";
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -219,9 +205,7 @@ public class FuncionariosDAO implements FuncionariosDao {
 
                 lista.add(obj);
             }
-
             return lista;
-
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Não encontrado!");
             return null;
@@ -259,6 +243,6 @@ public class FuncionariosDAO implements FuncionariosDao {
     @Override
     public Funcionario buscarFuncionario(int id) {
         //TODO
-        throw new UnsupportedOperationException("Ainda não implementado"); 
+        throw new UnsupportedOperationException("Ainda não implementado");
     }
 }

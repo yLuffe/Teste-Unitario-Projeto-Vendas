@@ -3,7 +3,7 @@ package br.com.projeto.model;
 public class Cliente {
 
     // Atributos
-    private int id;
+    int id;
     private String nome;
     private String rg;
     private String cpf;
@@ -22,6 +22,24 @@ public class Cliente {
     public Cliente() {
     }
 
+//    // Construtor sem ID
+//    public Cliente(String nome, String rg, String cpf, String email, String telefone, String celular, String cep, String endereco, int numero, String complemento, String bairro, String cidade, String uf) {
+//        this.nome = nome;
+//        this.rg = rg;
+//        this.cpf = cpf;
+//        this.email = email;
+//        this.telefone = telefone;
+//        this.celular = celular;
+//        this.cep = cep;
+//        this.endereco = endereco;
+//        this.numero = numero;
+//        this.complemento = complemento;
+//        this.bairro = bairro;
+//        this.cidade = cidade;
+//        this.uf = uf;
+//    }
+
+    // Contrutor com ID
     public Cliente(int id, String nome, String rg, String cpf, String email, String telefone, String celular, String cep, String endereco, int numero, String complemento, String bairro, String cidade, String uf) {
         this.id = id;
         this.nome = nome;

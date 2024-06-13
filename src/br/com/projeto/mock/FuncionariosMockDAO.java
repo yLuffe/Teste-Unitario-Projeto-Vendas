@@ -44,7 +44,6 @@ public class FuncionariosMockDao implements FuncionariosDao {
                 "Córrego Grande", "Florianópolis", "SC"));
     }
 
-
     @Override
     public void cadastrarFuncionarios(Funcionario obj) {
         // Simula a geração de um ID único
@@ -63,17 +62,17 @@ public class FuncionariosMockDao implements FuncionariosDao {
     }
 
     @Override
-    public void excluirFuncionario(Funcionario obj) {
+    public void excluirFuncionario(int id) {
         Iterator<Funcionario> iterator = funcionariosDataBase.iterator();
         while (iterator.hasNext()) {
             Funcionario funcionario = iterator.next();
-            if (funcionario.getId() == obj.getId()) {
+            if (funcionario.getId() == id) {
                 iterator.remove();
-                System.out.println("Funcionário removido (Mock): " + obj);
+                System.out.println("Funcionário removido (Mock): " + funcionario);
                 return;
             }
         }
-        System.out.println("Funcionário não encontrado para exclusão (Mock): " + obj);
+        System.out.println("Funcionário não encontrado para exclusão (Mock) com ID: " + id);
     }
 
     @Override
