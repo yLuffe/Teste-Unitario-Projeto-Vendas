@@ -10,13 +10,14 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import br.com.projeto.test.AppConfig;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 
 public class FrmFuncionario extends javax.swing.JFrame {
 
     // Switch modo teste e modo de operação + criação do objeto para utilizar métodos
     private FuncionariosDao dataAccess = AppConfig.getFuncionariosDao();
-    private final DefaultTableModel model; 
-    
+    private final DefaultTableModel model;
+
     public FrmFuncionario() {
         initComponents();
         model = (DefaultTableModel) tableFuncionarios.getModel();
@@ -100,7 +101,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        btnEcluir = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -132,6 +133,12 @@ public class FrmFuncionario extends javax.swing.JFrame {
                 .addComponent(labelCadastroFuncionarios)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
+
+        jTabbedPaneFuncionarios.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPaneFuncionariosStateChanged(evt);
+            }
+        });
 
         jPanelDadosPessoais.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -518,11 +525,11 @@ public class FrmFuncionario extends javax.swing.JFrame {
             }
         });
 
-        btnEcluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnEcluir.setText("EXCLUIR");
-        btnEcluir.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEcluirActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -540,11 +547,11 @@ public class FrmFuncionario extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(btnEcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnEcluir, btnEditar, btnNovo, btnSalvar});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnEditar, btnExcluir, btnNovo, btnSalvar});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -557,13 +564,13 @@ public class FrmFuncionario extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSalvar)
                         .addComponent(btnEditar)
-                        .addComponent(btnEcluir))
+                        .addComponent(btnExcluir))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnEcluir, btnEditar, btnNovo, btnSalvar});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnEditar, btnExcluir, btnNovo, btnSalvar});
 
         pack();
         setLocationRelativeTo(null);
@@ -599,7 +606,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
             new Utilitarios().limparJTextFields(jPanelDadosPessoais);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }finally{
+        } finally {
             listarFuncionarios();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -611,9 +618,11 @@ public class FrmFuncionario extends javax.swing.JFrame {
             jTabbedPaneFuncionarios.setSelectedIndex(0);
             // Limpa dos jTextFields
             new Utilitarios().limparJTextFields(jPanelDadosPessoais);
+            // Ativa o botão de "Salvar"
+            btnSalvar.setEnabled(true);
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }//GEN-LAST:event_btnNovoActionPerformed
 
     // Botão Salvar  
@@ -650,16 +659,17 @@ public class FrmFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     // Botão Excluir
-    private void btnEcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEcluirActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         try {
             dataAccess.excluirFuncionario((Integer.parseInt(textId.getText())));
             new Utilitarios().limparJTextFields(jPanelDadosPessoais);
+            btnSalvar.setEnabled(textId.getText().isEmpty() ? true : false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } finally {
             listarFuncionarios();
         }
-    }//GEN-LAST:event_btnEcluirActionPerformed
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     // Buscar dados do Funcionário e colocar nos campos do menu Dados Pessoais
     private void tableFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFuncionariosMouseClicked
@@ -692,6 +702,9 @@ public class FrmFuncionario extends javax.swing.JFrame {
                 // jComboBoxes
                 boxNivelAcesso.setSelectedItem(f.getNivelAcesso());
                 boxUnidadeFederativa.setSelectedItem(f.getUf());
+
+                // Desativa o botão de editar quando os dados passam para os jTextFields
+                btnSalvar.setEnabled(textId.getText().isEmpty() ? true : false);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -723,7 +736,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
         }
     }
 
-    // Botão Pesquisar
+    // Métodos de Pesquisa
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         buscarFuncionario();
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -731,6 +744,16 @@ public class FrmFuncionario extends javax.swing.JFrame {
     private void textPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPesquisaKeyPressed
         buscarFuncionario();
     }//GEN-LAST:event_textPesquisaKeyPressed
+
+    // Ativar botões de ação conforme menu selecionado
+    private void jTabbedPaneFuncionariosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPaneFuncionariosStateChanged
+        int selectedIndex = jTabbedPaneFuncionarios.getSelectedIndex();
+        boolean isEnabled = (selectedIndex == 0);
+
+        btnExcluir.setEnabled(isEnabled);
+        btnSalvar.setEnabled(isEnabled);
+        btnEditar.setEnabled(isEnabled);
+    }//GEN-LAST:event_jTabbedPaneFuncionariosStateChanged
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -743,8 +766,8 @@ public class FrmFuncionario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox boxNivelAcesso;
     private javax.swing.JComboBox boxUnidadeFederativa;
-    private javax.swing.JButton btnEcluir;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
