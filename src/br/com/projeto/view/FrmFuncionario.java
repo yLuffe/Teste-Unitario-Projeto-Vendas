@@ -14,16 +14,17 @@ import javax.swing.JOptionPane;
 public class FrmFuncionario extends javax.swing.JFrame {
 
     // Switch modo teste e modo de operação + criação do objeto para utilizar métodos
-    FuncionariosDao dataAccess = AppConfig.getFuncionariosDao();
-
+    private FuncionariosDao dataAccess = AppConfig.getFuncionariosDao();
+    private final DefaultTableModel model; 
+    
     public FrmFuncionario() {
         initComponents();
+        model = (DefaultTableModel) tableFuncionarios.getModel();
     }
 
     //Método Listar na Tabela
     public void listarFuncionarios() {
         List<Funcionario> listaFuncionarios = dataAccess.listarFuncionarios();
-        DefaultTableModel model = (DefaultTableModel) tableFuncionarios.getModel();
         model.setNumRows(0);
 
         for (Funcionario f : listaFuncionarios) {
@@ -37,14 +38,6 @@ public class FrmFuncionario extends javax.swing.JFrame {
                 f.getTelefone(),
                 f.getCidade(),
                 f.getUf()
-                //f.getRg(),
-                //f.getCpf(),             
-                //f.getSenha(),
-                //f.getCep(),
-                //f.getEndereco(),
-                //f.getNumero(),
-                //f.getComplemento(),
-                // f.getBairro()
             });
         }
     }
@@ -719,26 +712,17 @@ public class FrmFuncionario extends javax.swing.JFrame {
         try {
             String nome = "%" + textPesquisa.getText() + "%";
             List<Funcionario> listaFuncionarios = dataAccess.buscarFuncionario(nome);
-            DefaultTableModel dados = (DefaultTableModel) tableFuncionarios.getModel();
-            dados.setNumRows(0);
+            model.setNumRows(0);
 
             for (Funcionario f : listaFuncionarios) {
-                dados.addRow(new Object[]{
+                model.addRow(new Object[]{
                     f.getId(),
                     f.getNome(),
-                    f.getRg(),
-                    f.getCpf(),
-                    f.getEmail(),
-                    f.getSenha(),
                     f.getCargo(),
                     f.getNivelAcesso(),
-                    f.getTelefone(),
+                    f.getEmail(),
                     f.getCelular(),
-                    f.getCep(),
-                    f.getEndereco(),
-                    f.getNumero(),
-                    f.getComplemento(),
-                    f.getBairro(),
+                    f.getTelefone(),
                     f.getCidade(),
                     f.getUf()
                 });
