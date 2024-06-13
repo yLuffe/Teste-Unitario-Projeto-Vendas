@@ -577,7 +577,6 @@ public class FrmFuncionario extends javax.swing.JFrame {
             obj.setUf(boxUnidadeFederativa.getSelectedItem().toString());
 
             obj.setId(Integer.parseInt(textId.getText()));
-
             dataAccess.alterarFuncionario(obj);
 
             new Utilitarios().limparJTextFields(jPanelDadosPessoais);
