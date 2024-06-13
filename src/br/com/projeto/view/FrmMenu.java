@@ -31,7 +31,7 @@ public class FrmMenu extends javax.swing.JFrame {
         };
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lbusuario = new javax.swing.JLabel();
+        labelUser = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnClientes = new javax.swing.JMenuItem();
@@ -65,11 +65,11 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Usuario Logado: ");
+        jLabel1.setText("Usuário Logado: ");
 
-        lbusuario.setFont(lbusuario.getFont().deriveFont(lbusuario.getFont().getStyle() | java.awt.Font.BOLD, lbusuario.getFont().getSize()+1));
-        lbusuario.setForeground(new java.awt.Color(0, 51, 204));
-        lbusuario.setText("Luciano Coelho");
+        labelUser.setFont(labelUser.getFont().deriveFont(labelUser.getFont().getStyle() | java.awt.Font.BOLD, labelUser.getFont().getSize()+1));
+        labelUser.setForeground(new java.awt.Color(0, 51, 204));
+        labelUser.setText("Luciano Coelho");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,7 +79,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
-                .addComponent(lbusuario)
+                .addComponent(labelUser)
                 .addContainerGap(582, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -88,7 +88,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(0, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(lbusuario)))
+                    .addComponent(labelUser)))
         );
 
         painel_desktop.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -213,7 +213,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // Deixar Maximizado
         this.setExtendedState(this.MAXIMIZED_BOTH);
-        lbusuario.setText(usuariologado);
+        labelUser.setText(usuariologado);
         this.setVisible(true);
     }//GEN-LAST:event_formWindowActivated
 
@@ -279,7 +279,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JLabel lbusuario;
+    private javax.swing.JLabel labelUser;
     private javax.swing.JDesktopPane painel_desktop;
     // End of variables declaration//GEN-END:variables
 }
