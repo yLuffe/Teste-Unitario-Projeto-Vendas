@@ -613,9 +613,16 @@ public class FrmFuncionario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    // Botão Novo
+    // Botão "Novo"
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        new Utilitarios().limparJTextFields(jPanelDadosPessoais);
+        try {
+            // Leva o usuário para a tela de Cadastro
+            jTabbedPaneFuncionarios.setSelectedIndex(0);
+            // Limpa dos jTextFields
+            new Utilitarios().limparJTextFields(jPanelDadosPessoais);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
     }//GEN-LAST:event_btnNovoActionPerformed
 
     // Botão Salvar  
@@ -645,9 +652,11 @@ public class FrmFuncionario extends javax.swing.JFrame {
             dataAccess.cadastrarFuncionarios(obj);
 
             new Utilitarios().limparJTextFields(jPanelDadosPessoais);
-            listarFuncionarios();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+        }finally{
+            listarFuncionarios();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
