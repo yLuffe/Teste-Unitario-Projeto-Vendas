@@ -645,15 +645,15 @@ public class FrmFuncionario extends javax.swing.JFrame {
     private void tableFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFuncionariosMouseClicked
         try {
             jTabbedPaneFuncionarios.setSelectedIndex(0);
-            
+
             // Pega a linha selecionada da tabela
             int selectedRow = tableFuncionarios.getSelectedRow();
-            
+
             // Busca o funcionária por ID
             Funcionario f = dataAccess.buscarFuncionario((int) tableFuncionarios.getValueAt(selectedRow, 0));
 
             // jTextFields
-            textId.setText(f.getId()+"");
+            textId.setText(f.getId() + "");
             textNome.setText(f.getNome());
             textRG.setText(f.getRg());
             textCPF.setText(f.getCpf());
@@ -663,7 +663,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
             textNumCelular.setText(f.getCelular());
             textCEP.setText(f.getCep());
             textEndereco.setText(f.getEndereco());
-            textNumero.setText(f.getNumero()+"");
+            textNumero.setText(f.getNumero() + "");
             textComplemento.setText(f.getComplemento());
             textBairro.setText(f.getBairro());
             textCidade.setText(f.getCidade());
@@ -676,8 +676,8 @@ public class FrmFuncionario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tableFuncionariosMouseClicked
 
-    // Botão Pesquisar
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+    // Método Pesquisa de Funcionários
+    private void buscarFuncionario() {
         try {
             String nome = "%" + textPesquisa.getText() + "%";
             List<Funcionario> listaFuncionarios = dataAccess.buscarFuncionario(nome);
@@ -708,36 +708,15 @@ public class FrmFuncionario extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+    }
 
+    // Botão Pesquisar
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        buscarFuncionario();
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void textPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPesquisaKeyPressed
-//        String nome = "%" + textPesquisa.getText() + "%";
-//        List<Funcionario> listaFuncionarios = dao.buscaFuncionario(nome);
-//        DefaultTableModel dados = (DefaultTableModel) tableFuncionarios.getModel();
-//        dados.setNumRows(0);
-//
-//        for (Funcionario c : listaFuncionarios) {
-//            dados.addRow(new Object[]{
-//                c.getId(),
-//                c.getNome(),
-//                c.getRg(),
-//                c.getCpf(),
-//                c.getEmail(),
-//                c.getSenha(),
-//                c.getCargo(),
-//                c.getNivel_acesso(),
-//                c.getTelefone(),
-//                c.getCelular(),
-//                c.getCep(),
-//                c.getEndereco(),
-//                c.getNumero(),
-//                c.getComplemento(),
-//                c.getBairro(),
-//                c.getCidade(),
-//                c.getUf()
-//            });
-//        }
+        buscarFuncionario();
     }//GEN-LAST:event_textPesquisaKeyPressed
 
     public static void main(String args[]) {

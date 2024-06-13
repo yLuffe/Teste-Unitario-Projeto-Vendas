@@ -18,10 +18,30 @@ public class FuncionariosMockDao implements FuncionariosDao {
     }
 
     private void inicializarDadosMock() {
-        funcionariosDataBase.add(new Funcionario("123456", "Master", "Master", 001, "Luiz Fernando",
+        funcionariosDataBase.add(new Funcionario("123456", "Administrador", "Administrador", 001, "Luiz Fernando",
                 "1123123", "12345678912", "teste@teste.com", "48912345678", "48912345678",
                 "12123000", "Rua Sem Nome", 69, "null",
                 "Agronomica", "Florianópolis", "SC"));
+
+        funcionariosDataBase.add(new Funcionario("senha001", "Gerente", "Administrador", 002, "Ana Silva",
+                "22334455", "98765432100", "ana.silva@empresa.com", "48987654321", "48987654321",
+                "88034000", "Rua das Flores", 123, "Apt 101",
+                "Centro", "Florianópolis", "SC"));
+
+        funcionariosDataBase.add(new Funcionario("senha002", "Analista", "Usuario", 003, "Carlos Souza",
+                "33445566", "12345678901", "carlos.souza@empresa.com", "48976543210", "48976543210",
+                "88035000", "Avenida Central", 456, "Bloco B",
+                "Trindade", "Florianópolis", "SC"));
+
+        funcionariosDataBase.add(new Funcionario("senha003", "Desenvolvedor", "Usuario", 004, "Maria Oliveira",
+                "44556677", "98765432112", "maria.oliveira@empresa.com", "48965432109", "48965432109",
+                "88036000", "Rua do Sol", 789, "Casa 2",
+                "Coqueiros", "Florianópolis", "SC"));
+
+        funcionariosDataBase.add(new Funcionario("senha004", "Tester", "Administrador", 005, "João Santos",
+                "55667788", "12345678923", "joao.santos@empresa.com", "48954321098", "48954321098",
+                "88037000", "Rua das Palmeiras", 101, "Apt 303",
+                "Córrego Grande", "Florianópolis", "SC"));
     }
 
     @Override
@@ -92,12 +112,12 @@ public class FuncionariosMockDao implements FuncionariosDao {
         }
         return resultado;
     }
-    
+
     @Override
     public Funcionario buscarFuncionario(int id) {
         try {
-            for(Funcionario f :funcionariosDataBase){
-                if(f.getId() == id){
+            for (Funcionario f : funcionariosDataBase) {
+                if (f.getId() == id) {
                     return f;
                 }
             }
@@ -118,5 +138,4 @@ public class FuncionariosMockDao implements FuncionariosDao {
         System.out.println("Usuário não encontrado ou senha incorreta (Mock)");
     }
 
-    
 }
