@@ -10,12 +10,12 @@ public interface FuncionariosDao {
 
     List<Funcionario> listarFuncionarios();
 
-    void excluirFuncionario(Funcionario obj);
+    void excluirFuncionario(int id);
 
     void alterarFuncionario(Funcionario obj);
 
     List<Funcionario> buscarFuncionario(String nome);
-    
+
     Funcionario buscarFuncionario(int id);
 
     void efetuaLogin(String email, String senha);

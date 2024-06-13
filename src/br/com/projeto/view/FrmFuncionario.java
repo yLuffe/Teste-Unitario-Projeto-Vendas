@@ -20,6 +20,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
     public FrmFuncionario() {
         initComponents();
         model = (DefaultTableModel) tableFuncionarios.getModel();
+        listarFuncionarios();
     }
 
     //Método Listar na Tabela
@@ -108,11 +109,6 @@ public class FrmFuncionario extends javax.swing.JFrame {
         jButton4.setText("jButton4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -413,7 +409,7 @@ public class FrmFuncionario extends javax.swing.JFrame {
 
         jPanelConsultaFuncionarios.setBackground(new java.awt.Color(255, 255, 255));
 
-        labelNomePesquisa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelNomePesquisa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelNomePesquisa.setText("Nome:");
 
         textPesquisa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -455,13 +451,13 @@ public class FrmFuncionario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tableFuncionarios);
         if (tableFuncionarios.getColumnModel().getColumnCount() > 0) {
-            tableFuncionarios.getColumnModel().getColumn(0).setPreferredWidth(55);
-            tableFuncionarios.getColumnModel().getColumn(1).setPreferredWidth(290);
+            tableFuncionarios.getColumnModel().getColumn(0).setPreferredWidth(60);
+            tableFuncionarios.getColumnModel().getColumn(1).setPreferredWidth(280);
             tableFuncionarios.getColumnModel().getColumn(2).setPreferredWidth(120);
             tableFuncionarios.getColumnModel().getColumn(3).setPreferredWidth(120);
             tableFuncionarios.getColumnModel().getColumn(4).setPreferredWidth(250);
-            tableFuncionarios.getColumnModel().getColumn(5).setPreferredWidth(110);
-            tableFuncionarios.getColumnModel().getColumn(6).setPreferredWidth(110);
+            tableFuncionarios.getColumnModel().getColumn(5).setPreferredWidth(115);
+            tableFuncionarios.getColumnModel().getColumn(6).setPreferredWidth(115);
             tableFuncionarios.getColumnModel().getColumn(7).setPreferredWidth(100);
             tableFuncionarios.getColumnModel().getColumn(8).setPreferredWidth(30);
         }
@@ -471,29 +467,29 @@ public class FrmFuncionario extends javax.swing.JFrame {
         jPanelConsultaFuncionariosLayout.setHorizontalGroup(
             jPanelConsultaFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelConsultaFuncionariosLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addGroup(jPanelConsultaFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanelConsultaFuncionariosLayout.createSequentialGroup()
                         .addComponent(labelNomePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(12, 12, 12)
                         .addComponent(textPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addComponent(btnPesquisar)
-                        .addGap(0, 524, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(0, 520, Short.MAX_VALUE)))
+                .addGap(5, 5, 5))
         );
         jPanelConsultaFuncionariosLayout.setVerticalGroup(
             jPanelConsultaFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelConsultaFuncionariosLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addGroup(jPanelConsultaFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNomePesquisa)
                     .addComponent(textPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                .addGap(5, 5, 5))
         );
 
         jTabbedPaneFuncionarios.addTab("Consulta de Funcionários", jPanelConsultaFuncionarios);
@@ -603,6 +599,8 @@ public class FrmFuncionario extends javax.swing.JFrame {
             new Utilitarios().limparJTextFields(jPanelDadosPessoais);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+        }finally{
+            listarFuncionarios();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -621,34 +619,32 @@ public class FrmFuncionario extends javax.swing.JFrame {
     // Botão Salvar  
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
-            Funcionario obj = new Funcionario();
-
-            obj.setNome(textNome.getText());
-            obj.setRg(textRG.getText());
-            obj.setCpf(textCPF.getText());
-            obj.setEmail(textEmail.getText());
-
-            obj.setSenha(textSenha.getText());
-            obj.setCargo(textCargo.getText());
-            obj.setNivelAcesso(boxNivelAcesso.getSelectedItem().toString());
-
-            obj.setTelefone(textNumFixo.getText());
-            obj.setCelular(textNumCelular.getText());
-            obj.setCep(textCEP.getText());
-            obj.setEndereco(textEndereco.getText());
-            obj.setNumero(Integer.parseInt(textNumero.getText()));
-            obj.setComplemento(textComplemento.getText());
-            obj.setBairro(textBairro.getText());
-            obj.setCidade(textCidade.getText());
-            obj.setUf(boxUnidadeFederativa.getSelectedItem().toString());
-
-            dataAccess.cadastrarFuncionarios(obj);
-
-            new Utilitarios().limparJTextFields(jPanelDadosPessoais);
-            
+            Funcionario f = new Funcionario(
+                    textSenha.getText(),
+                    textCargo.getText(),
+                    boxNivelAcesso.getSelectedItem().toString(),
+                    -1,
+                    textNome.getText(),
+                    textRG.getText(),
+                    textCPF.getText(),
+                    textEmail.getText(),
+                    textNumFixo.getText(),
+                    textNumCelular.getText(),
+                    textCEP.getText(),
+                    textEndereco.getText(),
+                    Integer.parseInt(textNumero.getText()),
+                    textComplemento.getText(),
+                    textBairro.getText(),
+                    textCidade.getText(),
+                    boxUnidadeFederativa.getSelectedItem().toString()
+            );
+            // Cadastra no banco de dados
+            dataAccess.cadastrarFuncionarios(f);
+            // Limpa os campos da tela
+            Utilitarios.limparJTextFields(jPanelDadosPessoais);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
-        }finally{
+        } finally {
             listarFuncionarios();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -656,19 +652,14 @@ public class FrmFuncionario extends javax.swing.JFrame {
     // Botão Excluir
     private void btnEcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEcluirActionPerformed
         try {
-            Funcionario obj = new Funcionario();
-            obj.setId(Integer.parseInt(textId.getText()));
-            dataAccess.excluirFuncionario(obj);
+            dataAccess.excluirFuncionario((Integer.parseInt(textId.getText())));
             new Utilitarios().limparJTextFields(jPanelDadosPessoais);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            listarFuncionarios();
         }
     }//GEN-LAST:event_btnEcluirActionPerformed
-
-    //Carrega a lista
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        listarFuncionarios();
-    }//GEN-LAST:event_formWindowActivated
 
     // Buscar dados do Funcionário e colocar nos campos do menu Dados Pessoais
     private void tableFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFuncionariosMouseClicked
