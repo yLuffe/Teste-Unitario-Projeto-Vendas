@@ -213,7 +213,7 @@ public class FuncionariosDAO implements FuncionariosDao {
     }
 
     //Método Efetuar Login
-    public void efetuaLogin(String email, String senha) {
+    public boolean efetuaLogin(String email, String senha) {
         try {
             //1ºPasso - SQL
             String sql = "select*from tb_funcionarios where email=? and senha=?";
@@ -229,6 +229,7 @@ public class FuncionariosDAO implements FuncionariosDao {
                 FrmMenu tela = new FrmMenu();
                 tela.usuariologado = rs.getString("nome");
                 tela.setVisible(true);
+                return true;
             } else {
                 //Dados Incorretos
                 JOptionPane.showMessageDialog(null, "Dados Incorretos!");
@@ -238,6 +239,7 @@ public class FuncionariosDAO implements FuncionariosDao {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro : " + erro);
         }
+        return false;
     }
 
     @Override

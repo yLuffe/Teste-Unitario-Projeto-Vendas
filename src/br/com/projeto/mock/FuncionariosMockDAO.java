@@ -18,8 +18,8 @@ public class FuncionariosMockDao implements FuncionariosDao {
     }
 
     private void inicializarDadosMock() {
-        funcionariosDataBase.add(new Funcionario("123456", "Administrador", "Administrador", 001, "Luiz Fernando",
-                "12.123.163-12", "123.456.789-12", "teste@teste.com", "(48) 91234-5678", "(48) 91234-5678",
+        funcionariosDataBase.add(new Funcionario("1", "Administrador", "Administrador", 001, "Luiz Fernando",
+                "12.123.163-12", "123.456.789-12", "1", "(48) 91234-5678", "(48) 91234-5678",
                 "12123-000", "Rua Sem Nome", 69, "null",
                 "Agronomica", "Florianópolis", "SC"));
 
@@ -128,14 +128,13 @@ public class FuncionariosMockDao implements FuncionariosDao {
     }
 
     @Override
-    public void efetuaLogin(String email, String senha) {
-        for (Funcionario funcionario : funcionariosDataBase) {
-            if (funcionario.getEmail().equals(email) && funcionario.getSenha().equals(senha)) {
-                System.out.println("Usuário logado (Mock): " + funcionario.getNome());
-                return;
+    public boolean efetuaLogin(String email, String senha) {
+            for (Funcionario funcionario : funcionariosDataBase) {
+                if (funcionario.getEmail().equals(email) && funcionario.getSenha().equals(senha)) {
+                    System.out.println("Usuário logado (Mock): " + funcionario.getNome());
+                    return true;
+                }
             }
-        }
-        System.out.println("Usuário não encontrado ou senha incorreta (Mock)");
+            throw new IllegalArgumentException("Erro: Usuário não encontrado ou senha incorreta (Mock)");
     }
-
 }
