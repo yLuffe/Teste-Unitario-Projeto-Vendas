@@ -1,9 +1,14 @@
 package br.com.projeto.view;
 
 import br.com.projeto.dao.FuncionariosDAO;
+import br.com.projeto.interfaces.FuncionariosDao;
+import br.com.projeto.test.AppConfig;
 import javax.swing.JOptionPane;
 
 public class FrmLogin extends javax.swing.JFrame {
+
+    // Switch modo teste e modo de operação + criação do objeto para utilizar métodos
+    private FuncionariosDao dataAccess = AppConfig.getFuncionariosDao();
 
     public FrmLogin() {
         initComponents();
@@ -54,11 +59,6 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel5.setText("E-mail");
 
         txtemail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtemail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtemailActionPerformed(evt);
-            }
-        });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel17.setText("Senha");
@@ -116,22 +116,15 @@ public class FrmLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
-
-    }//GEN-LAST:event_txtemailActionPerformed
-
     // Botão Entrar
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         try {
-//            String email, senha;
-//            email = txtemail.getText();
-//            senha = txtsenha.getText();
-//            FuncionariosDAO dao = new FuncionariosDAO();
-//            dao.efetuaLogin(email, senha);
-            new FrmMenu().setVisible(true);
-            this.dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro : ");
+            if (dataAccess.efetuaLogin(txtemail.getText(), txtsenha.getText())) {
+                this.dispose();
+                new FrmMenu().setVisible(true);
+            }
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 

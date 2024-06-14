@@ -18,5 +18,5 @@ public interface FuncionariosDao {
 
     Funcionario buscarFuncionario(int id);
 
-    void efetuaLogin(String email, String senha);
+    boolean efetuaLogin(String email, String senha);
 }
