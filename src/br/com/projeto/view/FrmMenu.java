@@ -241,9 +241,8 @@ public class FrmMenu extends javax.swing.JFrame {
             this.dispose();
             new FrmLogin().setVisible(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e);
+            e.printStackTrace();
         }
-
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
     public static void main(String args[]) {
