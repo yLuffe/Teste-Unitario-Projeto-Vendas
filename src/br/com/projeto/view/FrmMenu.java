@@ -8,10 +8,10 @@ import br.com.projeto.view.*;
 
 public class FrmMenu extends javax.swing.JFrame {
 
-    public String usuariologado;
-
-    public FrmMenu() {
+    public FrmMenu(String usuarioLogado) {
         initComponents();
+        labelUsuarioLogado.setText(usuarioLogado);
+        this.setExtendedState(this.MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")
@@ -31,7 +31,7 @@ public class FrmMenu extends javax.swing.JFrame {
         };
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        labelUser = new javax.swing.JLabel();
+        labelUsuarioLogado = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnClientes = new javax.swing.JMenuItem();
@@ -59,17 +59,12 @@ public class FrmMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Controle de Estoque");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
 
         jLabel1.setText("Usuário Logado: ");
 
-        labelUser.setFont(labelUser.getFont().deriveFont(labelUser.getFont().getStyle() | java.awt.Font.BOLD, labelUser.getFont().getSize()+1));
-        labelUser.setForeground(new java.awt.Color(0, 51, 204));
-        labelUser.setText("Luciano Coelho");
+        labelUsuarioLogado.setFont(labelUsuarioLogado.getFont().deriveFont(labelUsuarioLogado.getFont().getStyle() | java.awt.Font.BOLD, labelUsuarioLogado.getFont().getSize()+1));
+        labelUsuarioLogado.setForeground(new java.awt.Color(0, 51, 204));
+        labelUsuarioLogado.setText("Luciano Coelho");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,9 +73,9 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addComponent(labelUser)
-                .addContainerGap(582, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(labelUsuarioLogado)
+                .addContainerGap(664, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +83,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(0, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(labelUser)))
+                    .addComponent(labelUsuarioLogado)))
         );
 
         painel_desktop.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -210,13 +205,6 @@ public class FrmMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // Deixar Maximizado
-        this.setExtendedState(this.MAXIMIZED_BOTH);
-        labelUser.setText(usuariologado);
-        this.setVisible(true);
-    }//GEN-LAST:event_formWindowActivated
-
     // Feito por Luiz Fernando
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         int option = JOptionPane.showConfirmDialog(rootPane, "Deseja sair do sistema?");
@@ -248,7 +236,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmMenu().setVisible(true);
+                new FrmMenu(null).setVisible(true);
             }
         });
     }
@@ -278,7 +266,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JLabel labelUser;
+    private javax.swing.JLabel labelUsuarioLogado;
     private javax.swing.JDesktopPane painel_desktop;
     // End of variables declaration//GEN-END:variables
 }
