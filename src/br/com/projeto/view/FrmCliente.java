@@ -32,11 +32,8 @@ public class FrmCliente extends javax.swing.JFrame {
                 c.getBairro(),
                 c.getCidade(),
                 c.getUf()
-
             });
-
         }
-
     }
 
     public FrmCliente() {
@@ -132,12 +129,6 @@ public class FrmCliente extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane1MouseClicked(evt);
-            }
-        });
-
         painel_Dados_Pessoais.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -145,28 +136,13 @@ public class FrmCliente extends javax.swing.JFrame {
 
         txtid.setEditable(false);
         txtid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Nome:");
 
         txtnome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtnome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnomeActionPerformed(evt);
-            }
-        });
 
         txtemail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtemail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtemailActionPerformed(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Celular:");
@@ -205,51 +181,26 @@ public class FrmCliente extends javax.swing.JFrame {
         jLabel8.setText("Rua");
 
         txtendereco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtendereco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtenderecoActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Nº:");
 
         txtnumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtnumero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnumeroActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Bairro:");
 
         txtbairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtbairro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbairroActionPerformed(evt);
-            }
-        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Cidade:");
 
         txtcidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtcidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcidadeActionPerformed(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Complemento:");
 
         txtcomplemento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtcomplemento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcomplementoActionPerformed(evt);
-            }
-        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("CEP:");
@@ -321,9 +272,9 @@ public class FrmCliente extends javax.swing.JFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
                         .addGroup(painel_Dados_PessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painel_Dados_PessoaisLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
                                 .addGroup(painel_Dados_PessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtcep, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtbairro, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -349,9 +300,7 @@ public class FrmCliente extends javax.swing.JFrame {
                                         .addComponent(jLabel12)
                                         .addGap(12, 12, 12)
                                         .addComponent(txtcomplemento))))
-                            .addGroup(painel_Dados_PessoaisLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painel_Dados_PessoaisLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel17))
@@ -416,21 +365,11 @@ public class FrmCliente extends javax.swing.JFrame {
         jTabbedPane1.addTab("Dados Pessoais", painel_Dados_Pessoais);
 
         Painel_Pesquisar.setBackground(new java.awt.Color(255, 255, 255));
-        Painel_Pesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Painel_PesquisarMouseClicked(evt);
-            }
-        });
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setText("Nome:");
 
         txtpesquisa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtpesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpesquisaActionPerformed(evt);
-            }
-        });
         txtpesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtpesquisaKeyPressed(evt);
@@ -450,15 +389,32 @@ public class FrmCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "RG", "Cpf", "E-mail", "Telefone", "Celular", "CEP", "Endereço", "Nº", "Comp", "Bairro", "Cidade", "UF"
+                "Código", "Nome", "E-mail", "CPF", "Celular", "Telefone", "Cidade", "UF", "RG", "CEP", "Endereço", "Nº", "Comp", "Bairro"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaClientes.getTableHeader().setReorderingAllowed(false);
         tabelaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaClientesMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabelaClientes);
+        if (tabelaClientes.getColumnModel().getColumnCount() > 0) {
+            tabelaClientes.getColumnModel().getColumn(8).setResizable(false);
+            tabelaClientes.getColumnModel().getColumn(9).setResizable(false);
+            tabelaClientes.getColumnModel().getColumn(10).setResizable(false);
+            tabelaClientes.getColumnModel().getColumn(11).setResizable(false);
+            tabelaClientes.getColumnModel().getColumn(12).setResizable(false);
+            tabelaClientes.getColumnModel().getColumn(13).setResizable(false);
+        }
 
         javax.swing.GroupLayout Painel_PesquisarLayout = new javax.swing.GroupLayout(Painel_Pesquisar);
         Painel_Pesquisar.setLayout(Painel_PesquisarLayout);
@@ -565,45 +521,8 @@ public class FrmCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidActionPerformed
-
-    private void txtnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnomeActionPerformed
-
-    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtemailActionPerformed
-
-    private void txtenderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtenderecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtenderecoActionPerformed
-
-    private void txtnumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumeroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnumeroActionPerformed
-
-    private void txtbairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbairroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbairroActionPerformed
-
-    private void txtcidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtcidadeActionPerformed
-
-    private void txtcomplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcomplementoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtcomplementoActionPerformed
-
-    private void txtpesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpesquisaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpesquisaActionPerformed
-
+    // Botão Editar 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-
-        // Botão Editar        
         Cliente obj = new Cliente();
 
         obj.setNome(txtnome.getText());
@@ -624,19 +543,16 @@ public class FrmCliente extends javax.swing.JFrame {
 
         ClientesDAO dao = new ClientesDAO();
         dao.alterarCliente(obj);
-        
-        new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
 
+        new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        
         new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
-        
     }//GEN-LAST:event_btnNovoActionPerformed
 
+    // Botão Salvar   
     private void btnsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvarActionPerformed
-        // Botão Salvar        
         Cliente obj = new Cliente();
 
         obj.setNome(txtnome.getText());
@@ -655,13 +571,12 @@ public class FrmCliente extends javax.swing.JFrame {
 
         ClientesDAO dao = new ClientesDAO();
         dao.cadastrarCliente(obj);
-        
+
         new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
     }//GEN-LAST:event_btnsalvarActionPerformed
 
+    // Botão Excluir
     private void btnEcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEcluirActionPerformed
-
-        // Botão Excluir
         Cliente obj = new Cliente();
 
         obj.setId(Integer.parseInt(txtid.getText()));
@@ -669,29 +584,17 @@ public class FrmCliente extends javax.swing.JFrame {
         ClientesDAO dao = new ClientesDAO();
 
         dao.excluirCliente(obj);
-        
+
         new Utilitarios().limparJTextFields(painel_Dados_Pessoais);
-
-
     }//GEN-LAST:event_btnEcluirActionPerformed
 
+    //Carrega a lista
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        //Carrega a lista
         listar();
-
     }//GEN-LAST:event_formWindowActivated
 
-    private void Painel_PesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Painel_PesquisarMouseClicked
-        // Pegar Dados
-
-    }//GEN-LAST:event_Painel_PesquisarMouseClicked
-
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
-
+    // Pegar Dados
     private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked
-        // Pegar Dados
         jTabbedPane1.setSelectedIndex(0);
 
         txtid.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
@@ -708,12 +611,37 @@ public class FrmCliente extends javax.swing.JFrame {
         txtbairro.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 11).toString());
         txtcidade.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 12).toString());
         cbuf.setSelectedItem(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 13).toString());
-
-
     }//GEN-LAST:event_tabelaClientesMouseClicked
 
+    // Botão Pesquisar
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // Botão Pesquisar
+        String nome = "%" + txtpesquisa.getText() + "%";
+        ClientesDAO dao = new ClientesDAO();
+        List<Cliente> lista = dao.buscaClientePorNome(nome);
+        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
+        dados.setNumRows(0);
+
+        for (Cliente c : lista) {
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getRg(),
+                c.getCpf(),
+                c.getEmail(),
+                c.getTelefone(),
+                c.getCelular(),
+                c.getCep(),
+                c.getEndereco(),
+                c.getNumero(),
+                c.getComplemento(),
+                c.getBairro(),
+                c.getCidade(),
+                c.getUf()
+            });
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void txtpesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpesquisaKeyPressed
         String nome = "%" + txtpesquisa.getText() + "%";
         ClientesDAO dao = new ClientesDAO();
         List<Cliente> lista = dao.buscaClientePorNome(nome);
@@ -738,37 +666,6 @@ public class FrmCliente extends javax.swing.JFrame {
                 c.getUf()
 
             });
-
-        }
-
-    }//GEN-LAST:event_btnPesquisarActionPerformed
-
-    private void txtpesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpesquisaKeyPressed
-               String nome = "%" + txtpesquisa.getText() + "%";
-        ClientesDAO dao = new ClientesDAO();
-        List<Cliente> lista = dao.buscaClientePorNome(nome);
-        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
-        dados.setNumRows(0);
-
-        for (Cliente c : lista) {
-            dados.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
-
-            });
-
         }
     }//GEN-LAST:event_txtpesquisaKeyPressed
 
