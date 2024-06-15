@@ -213,33 +213,34 @@ public class FuncionariosDAO implements FuncionariosDao {
     }
 
     //Método Efetuar Login
-    public boolean efetuaLogin(String email, String senha) {
-        try {
-            //1ºPasso - SQL
-            String sql = "select*from tb_funcionarios where email=? and senha=?";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, email);
-            stmt.setString(2, senha);
-
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                //Usuario Logou
-                JOptionPane.showMessageDialog(null, "Seja Bem vindo ao Sistema!");
-                FrmMenu tela = new FrmMenu();
-                tela.usuariologado = rs.getString("nome");
-                tela.setVisible(true);
-                return true;
-            } else {
-                //Dados Incorretos
-                JOptionPane.showMessageDialog(null, "Dados Incorretos!");
-                FrmLogin telaLogin = new FrmLogin();
-                telaLogin.setVisible(true);
-            }
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Erro : " + erro);
-        }
-        return false;
+    public String efetuaLogin(String email, String senha) {
+//        try {
+//            //1ºPasso - SQL
+//            String sql = "select*from tb_funcionarios where email=? and senha=?";
+//            PreparedStatement stmt = con.prepareStatement(sql);
+//            stmt.setString(1, email);
+//            stmt.setString(2, senha);
+//
+//            ResultSet rs = stmt.executeQuery();
+//
+//            if (rs.next()) {
+//                //Usuario Logou
+//                JOptionPane.showMessageDialog(null, "Seja Bem vindo ao Sistema!");
+//                FrmMenu tela = new FrmMenu();
+//                tela.usuariologado = rs.getString("nome");
+//                tela.setVisible(true);
+//                return true;
+//            } else {
+//                //Dados Incorretos
+//                JOptionPane.showMessageDialog(null, "Dados Incorretos!");
+//                FrmLogin telaLogin = new FrmLogin();
+//                telaLogin.setVisible(true);
+//            }
+//        } catch (SQLException erro) {
+//            JOptionPane.showMessageDialog(null, "Erro : " + erro);
+//        }
+//        return false;
+        return "";
     }
 
     @Override

@@ -119,10 +119,8 @@ public class FrmLogin extends javax.swing.JFrame {
     // Botão Entrar
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         try {
-            if (dataAccess.efetuaLogin(txtemail.getText(), txtsenha.getText())) {
-                this.dispose();
-                new FrmMenu().setVisible(true);
-            }
+            new FrmMenu(dataAccess.efetuaLogin(txtemail.getText(), txtsenha.getText())).setVisible(true);
+            this.dispose();
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
